@@ -4,18 +4,23 @@
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
 \usepackage{multicol}
+\usepackage{amsmath}
 
 % Page layout
 \geometry{a4paper, margin=0.5in}
 
 \begin{document}
 
-\begin{multicols}{3}
+\begin{multicols}{2}
 
-\section*{Section 1}
-Content for section 1.
+\section*{Module 1}
+Objective Function for Vanilla Linear Regression:
+\begin{equation}
+    J(\omega) = \frac{1}{2} \lVert{t - X\omega} \rVert^{2}_{2}
+\end{equation}
+We solve for the optimal $\omega$ by taking the derivative of the objective function with respect to $\omega$ and setting it to zero:
 
-\section*{Section 2}
+\section*{Module 2}
 Content for section 2.
 
 % Add more sections as needed
