@@ -61,7 +61,8 @@ We solve for the optimal $\omega$ by taking the derivative of the objective func
 
 % Radial Basis Function
 \begin{equation}
-    \phi_{j}(x) = \exp\left(-\frac{(x - \mu_{j})^{2}}{2s^{2}}\right)
+    % e 
+    \phi_{j}(x) = \exp -\frac{\lVert x - \mu \rVert^2}{2\sigma^{2}}
 \end{equation}
 
 % Polynomial Basis Function
@@ -184,6 +185,12 @@ We solve for the optimal $\omega$ by taking the derivative of the objective func
 \begin{equation*} \label{eq:log-likelihood}
     \ln \mathcal{L}_0 = \sum_{i=1}^{N} \ln \sum_{k=1}^{K} \pi_{k} \mathcal{N}(x_i ; \mu_{k}, \Sigma_{k})
 \end{equation*}
+
+% Hidden Latent Variable
+\begin{equation*} \label{eq:hidden-latent}
+    z_{i} = \text{label of the Gaussian component for the $i^{th}$ data point $x_i$}
+\end{equation*}
+    
 
 \end{multicols}
 
