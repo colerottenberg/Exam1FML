@@ -12,7 +12,6 @@
 \begin{document}
 
 \begin{multicols}{2}
-
 \section*{Module 1}
 Objective Function for Vanilla Linear Regression:
 \begin{equation}
@@ -20,9 +19,97 @@ Objective Function for Vanilla Linear Regression:
 \end{equation}
 We solve for the optimal $\omega$ by taking the derivative of the objective function with respect to $\omega$ and setting it to zero:
 
-\section*{Module 2}
+\begin{equation}
+    \frac{\partial J(\omega)}{\partial \omega} = 0, (X^{T}X)^{-1}X^{T}t = \omega
+\end{equation}
 
+% Feature Matrix and Target Vector
+\begin{equation} \label{eq:feature-target}
+    X = \begin{bmatrix} 
+    1 & x_{1} \\
+    1 & x_{2} \\
+    \vdots & \vdots \\
+    1 & x_{n}
+    \quad
+    \end{bmatrix}
+    t = \begin{bmatrix}
+    t_{1} \\
+    t_{2} \\
+    \vdots \\
+    t_{n}
+    \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+    % Ridge Regression
+    \label{eq:ridge}
+    (X^{T}X + \lambda I)^{-1}X^{T}t = \omega
+\end{equation}
+
+\section*{Experimental Design and Analysis}
+\subsection*{Basis Functions}
+
+\begin{equation}
+    \phi(x) = \begin{bmatrix}
+    \phi_{0}(x) \\
+    \phi_{1}(x) \\
+    \vdots \\
+    \phi_{M}(x)
+    \end{bmatrix}
+\end{equation}
+
+% Radial Basis Function
+\begin{equation}
+    \phi_{j}(x) = \exp\left(-\frac{(x - \mu_{j})^{2}}{2s^{2}}\right)
+\end{equation}
+
+% Polynomial Basis Function
+\begin{equation}
+    \phi_{j}(x) = x^{j}
+\end{equation}
 % Add more sections as needed
+
+\subsection*{Model Selection}
+% Lasso Regression
+\begin{equation}
+    \label{eq:lasso}
+    \min_{\omega} \frac{1}{2} \lVert{t - X\omega} \rVert^{2}_{2} + \lambda \lVert{\omega} \rVert_{1}
+\end{equation}
+
+% Elastic Net
+\begin{equation}
+    \label{eq:elastic-net}
+    \min_{\omega} \frac{1}{2} \lVert{t - X\omega} \rVert^{2}_{2} + \lambda_{1} \lVert{\omega} \rVert_{1} + \lambda_{2} \lVert{\omega} \rVert^{2}_{2}, \quad \lambda_{1} + \lambda_{2} = 1
+\end{equation}
+
+\subsection*{Metrics of Regression}
+% Mean Squared Error
+\begin{equation}
+    \label{eq:mse}
+    \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (t_{i} - \hat{t}_{i})^{2}
+\end{equation}
+
+% Mean Absolute Error
+\begin{equation}
+    \label{eq:mae}
+    \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} \lvert t_{i} - \hat{t}_{i} \rvert
+\end{equation}
+
+% R-Squared
+\begin{equation}
+    \label{eq:r-squared}
+    R^{2} = 1 - \frac{\sum_{i=1}^{n} (t_{i} - \hat{t}_{i})^{2}}{\sum_{i=1}^{n} (t_{i} - \bar{t})^{2}}, \quad \bar{t} = \frac{1}{n} \sum_{i=1}^{n} t_{i}
+\end{equation}
+
+% Another R-Squared Equation
+\begin{equation}
+    \label{eq:r-squared-2}
+    R^{2} = 1 - \frac{\lVert{t - X\omega} \rVert^{2}_{2}}{\lVert{t - \bar{t}} \rVert^{2}_{2}}
+\end{equation}
+
+% Q-Q Plot
+
+\subsection*{Cross-Validation}
 
 \end{multicols}
 
