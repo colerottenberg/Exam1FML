@@ -191,6 +191,94 @@ We solve for the optimal $\omega$ by taking the derivative of the objective func
     z_{i} = \text{label of the Gaussian component for the $i^{th}$ data point $x_i$}
 \end{equation*}
     
+\begin{equation*}
+    \mathcal{L}^c = \prod_{i=1}^{N} \pi_{z_{i}} \mathcal{N}(x_i ; \mu_{z_{i}}, \Sigma_{z_{i}})
+\end{equation*}
+
+% Expectation Step
+\begin{equation*}
+    Q(\Theta, \Theta^{(t)}) = \mathbb{E}_{z}[\ln p(x, z | \Theta) | X, \Theta^{(t)}]
+\end{equation*}
+
+\begin{equation*}
+    P(z_{i} | x_{i}, \Theta^{(t)}) = \frac{P(x_i | z_i, \Theta^t) P(z_i | \Theta^t)}{P(x_i | \Theta^t)} = \frac{\pi_{z_{i}} \mathcal{N}(x_i ; \mu_{z_{i}}, \Sigma_{z_{i}})}{\sum_{k=1}^{K} \pi_{k} \mathcal{N}(x_i ; \mu_{k}, \Sigma_{k})} 
+\end{equation*}
+
+\begin{equation*}
+    C_{ik} = P(z_i | x_i, \Theta^{(t)}) = \frac{\pi_{k} \mathcal{N}(x_i ; \mu_{k}, \Sigma_{k})}{\sum_{j=1}^{K} \pi_{j} \mathcal{N}(x_i ; \mu_{j}, \Sigma_{j})}
+\end{equation*}
+
+% Maximization Step
+\begin{equation*}
+    \text{arg}_{\Theta} \max Q(\Theta, \Theta^{(t)}) = \sum_{z_i}^{K} \ln(\mathcal{L}^c) P(z_i | x_i, \Theta^{(t)})
+\end{equation*}
+
+\begin{equation*}
+    = \sum_{z_i = 1}^{K} \ln(\prod_{i=1}^{N} \pi_{z_{i}} G(x_i ; \mu_{z_{i}}, \Sigma_{z_{i}})) P(z_i | x_i, \Theta^{(t)})
+\end{equation*}
+
+\begin{equation*}
+    = \sum_{k=1}^{K} \sum_{i=1}^{N} (\ln(\pi_{k}) + \ln(G(x_i ; \mu_{k}, \Sigma_{k}))) C_{ik}
+\end{equation*}
+
+\begin{equation*}
+    = \sum_{k=1}^{K} \sum_{i=1}^{N} (\ln(\pi_{k}) - \frac{d}{2}\ln(2\pi) - \frac{d}{2}\ln(\sigma_{k}^2) - \frac{1}{2\sigma_{k}^2}\lVert x_i - \mu_{k} \rVert^2_2) C_{ik}
+\end{equation*}
+
+\begin{equation*}
+    \mu_{K} = \frac{\sum_{i=1}^{N}\mathbf{x}_i C_{ik}}{\sum_{i=1}^{N} C_{ik}}
+\end{equation*}
+
+\begin{equation*}
+    \sigma_{k}^2 = \frac{\sum_{i=1}^{N} C_{ik} \lVert x_i - \mu_{k} \rVert^2_2}{d \sum_{i=1}^{N} C_{ik}}
+\end{equation*}
+
+\begin{equation*}
+    \pi_{k} = \frac{\sum_{i=1}^{N} C_{ik}}{N}
+\end{equation*}
+
+\section*{Non-Parametric Models}
+
+% K-means Clustering
+\begin{equation*}
+    J(\Theta, U) = \sum_{i=1}^{N} \sum_{k=1}^{K} u_{ik} d^2(x_i, \theta_k) = \sum_{i=1}^{N} \sum_{k=1}^{K} u_{ik} \lVert x_i - \theta_k \rVert^2_2
+\end{equation*}
+
+\begin{equation*}
+    \theta_k = \frac{\sum_{x_i \in C_k}^{} x_i}{N_k}
+\end{equation*}
+
+% Clustering Validatity Metrics
+\begin{enumerate}
+    \item $b_i$ = average distance from $x_i$ to all other points in the same cluster
+    \vspace*{-6pt}
+    \item $a_i$ = average distance from $x_i$ to all other points in the nearest cluster
+\end{enumerate}
+\begin{equation*}
+    \text{Silhouette} = \frac{1}{N} \sum_{i=1}^{N} \frac{b_i - a_i}{\max(a_i, b_i)}
+\end{equation*}
+
+% Rand Index
+\begin{enumerate}
+    \item $a$ = number of pairs of elements in $S$ that are in the same cluster and in the same set in $S'$
+    \vspace*{-6pt}
+    \item $b$ = number of pairs of elements in $S$ that are in different clusters and in different sets in $S'$
+    \vspace*{-6pt}
+    \item $c$ = number of pairs of elements in $S$ that are in the same cluster and in different sets in $S'$
+    \vspace*{-6pt}
+    \item $d$ = number of pairs of elements in $S$ that are in different clusters and in the same set in $S'$
+\end{enumerate}
+
+\begin{equation*}
+    \text{Rand Index} = \frac{a + b}{a + b + c + d}
+\end{equation*}
+
+% IoU or Jaccard Index
+\begin{equation*}
+    \text{Jaccard} = \frac{\text{TP}}{\text{TP} + \text{FP} + \text{FN}}
+\end{equation*}
+
+% Applications of K-means
 
 \end{multicols}
 
