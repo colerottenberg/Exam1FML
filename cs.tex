@@ -266,7 +266,20 @@ We solve for the optimal $\omega$ by taking the derivative of the objective func
     \text{Jaccard} = \frac{\text{TP}}{\text{TP} + \text{FP} + \text{FN}}
 \end{equation*}
 
-% Applications of K-means
+% K-nearest Neighbors
+
+% K-NN Algorithm
+\begin{equation*}
+   \text{Euclidean Distance} = \lVert x_1 - x_2 \rVert_2^2 = \sum_{i=1}^{d} (x_{1i} - x_{2i})^2
+\end{equation*}
+
+\begin{equation*}
+    \text{Manhattan Distance} = \lVert x_1 - x_2 \rVert_1 = \sum_{i=1}^{d} \lvert x_{1i} - x_{2i} \rvert
+\end{equation*}
+
+\begin{equation*}
+    \text{Mahalanobis Distance} = \lVert x_1 - x_2 \rVert_{\Sigma} = \sqrt{(x_1 - x_2)^T \Sigma^{-1} (x_1 - x_2)}
+\end{equation*}
 
 \end{multicols}
 
