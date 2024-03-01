@@ -113,47 +113,35 @@ We solve for the optimal $\omega$ by taking the derivative of the objective func
 
 \subsection*{Bayesian Learning}
 % Bayesian Interpretation of Least Squares Regression
-\begin{equation}
-    \label{eq:bayesian-ls}
-    \omega_{MLE} = \text{arg}_{\omega}\text{max} \prod_{i=1}^{n} p(t_{i} | x_{i}, \omega)
-\end{equation}
-
-\begin{equation}
-    \label{eq:bayesian-ls-2}
-    \omega_{MLE} = \text{arg}_{\omega}\text{max} \sum_{i=1}^{N} \ln p(t_{i} | x_{i}, \omega) \quad
-\end{equation}
-
 \begin{equation*}
-    \label{eq:bayesian-ls-3}
-    \omega_{MLE} = \text{arg}_{\omega}\text{min} \mathbb{E}_{\phi(x)} [\ln p(t | x, \omega)]
+    P(C_i | x) = \frac{P(x | C_i)P(C_i)}{\sum_{j=1}^{K} P(x | C_j)P(C_j)}
 \end{equation*}
 
-% Ridge Regression as MAP Maximum A Posteriori
-\begin{equation}
-    \label{eq:ridge-map}
-    \omega_{\text{MAP}} \propto \text{arg}_{\omega}\text{max} \prod_{i=1}^{N} \mathcal{N}(t_i ; y_i, 1) \mathcal{N}(\omega_j ; 0 , \frac{1}{\lambda})
-\end{equation}
+\begin{equation*}
+    P(\lambda) = \frac{\beta_{\alpha}}{\Gamma(\alpha)} \lambda^{\alpha - 1} e^{-\beta \lambda}
+\end{equation*}
+
 
 % Conjucate Priors
 \begin{enumerate}
     \item Gaussian-Gaussian
-    \vspace*{-6pt}
+    \vspace*{-8pt}
     \item Gaussian-Exponential
-    \vspace*{-6pt}
+    \vspace*{-8pt}
     \item Gaussian-Gamma
-    \vspace*{-6pt}
+    \vspace*{-8pt}
     \item Gaussian-Beta
-    \vspace*{-6pt}
+    \vspace*{-8pt}
     \item Gaussian-Dirichlet
-    \vspace*{-6pt}
+    \vspace*{-8pt}
     \item Gaussian-Wishart
-    \vspace*{-6pt}
+    \vspace*{-8pt}
     \item Gaussian-Inverse Wishart
-    \vspace*{-6pt}
+    \vspace*{-8pt}
     \item Gaussian-Student's t
-    \vspace*{-6pt}
+    \vspace*{-8pt}
     \item Gaussian-Laplace
-    \vspace*{-6pt}
+    \vspace*{-8pt}
     \item Gaussian-Cauchy
 \end{enumerate}
 
