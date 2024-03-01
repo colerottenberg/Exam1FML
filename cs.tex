@@ -1,5 +1,4 @@
 \documentclass[10pt]{article}
-
 % Packages
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
@@ -14,14 +13,18 @@
 
 \begin{multicols}{2}
 \section*{Intro to ML}
-Objective Function for Vanilla Linear Regression:
 \begin{equation}
     J(\omega) = \frac{1}{2} \lVert{t - X\omega} \rVert^{2}_{2}
 \end{equation}
-We solve for the optimal $\omega$ by taking the derivative of the objective function with respect to $\omega$ and setting it to zero:
 
 \begin{equation}
     \frac{\partial J(\omega)}{\partial \omega} = 0, (X^{T}X)^{-1}X^{T}t = \omega
+\end{equation}
+
+% Mapper Function
+\begin{equation}
+    \label{eq:mapper}
+    f(\phi(x), \omega) = \omega^{T}\phi(x)
 \end{equation}
 
 % Feature Matrix and Target Vector
@@ -166,12 +169,12 @@ We solve for the optimal $\omega$ by taking the derivative of the objective func
 
 %Observed Data Likelihood
 \begin{equation*} \label{eq:observed-likelihood}
-    \mathcal{L}_0 = \prod_{i=1}^{N} \sum_{k=1}^{K} \pi_{k} \mathcal{N}(x_i ; \mu_{k}, \Sigma_{k})
+    \mathcal{L}^0 = \prod_{i=1}^{N} \sum_{k=1}^{K} \pi_{k} \mathcal{N}(x_i ; \mu_{k}, \Sigma_{k})
 \end{equation*}
 
 % Log Likelihood
 \begin{equation*} \label{eq:log-likelihood}
-    \ln \mathcal{L}_0 = \sum_{i=1}^{N} \ln \sum_{k=1}^{K} \pi_{k} \mathcal{N}(x_i ; \mu_{k}, \Sigma_{k})
+    \ln \mathcal{L}^0 = \sum_{i=1}^{N} \ln \sum_{k=1}^{K} \pi_{k} \mathcal{N}(x_i ; \mu_{k}, \Sigma_{k})
 \end{equation*}
 
 % Hidden Latent Variable
